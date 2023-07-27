@@ -1,0 +1,127 @@
+//Ingresr al disco local / devolvrse
+cd..
+
+
+//ingresar carpeta 
+cd nombre
+
+
+//Ingresar a la ruta del mysql.exe
+cd C:\xampp\mysql\bin
+
+
+//Ejecutar mysql.exe
+C:\xampp\mysql\bin > mysql -h localhost -u root
+
+
+//Ver las bases de datos
+show databases;
+
+
+//Ver los datos de una tabla 
+explain nombre_tabla
+
+
+//Crear base de datos vehiculos
+ceate database Vehiculos;
+
+
+//Usar la base de datos creada
+use Vehiculos
+
+
+//Crear tabla vendedores
+
+create table Vendedores
+(
+IDvendedor int(10) not null auto_increment,
+P_Apellido varchar(50) not null,
+S_Apellido varchar(50) null,
+P_Nombre varchar(50) not null,
+S_Nombre varchar(50) null,
+telefono varchar(30) not null,
+f_nacimiento date not null,
+primary key (IDvendedor)
+);
+
+//Crear tabla Vehiculos
+
+create table vehiculos
+(
+IDvehiculo varchar(10) not null,
+Vehiculo varchar(10) not null,
+Transmision varchar(50) not null,
+Precio float not null,
+primary key (IDvehiculo) 
+);
+
+//Crear tabla cliente
+
+create table Clientes
+(
+IDCliente varchar(10) not null,
+P_Apellido varchar(10) not null,
+S_Apellido varchar(10) null,
+P_Nombre varchar(10) not null,
+S_Nombre varchar(10) null,
+Direccion varchar(50) not null,
+Barrio varchar(50) not null,
+Ciudad varchar(50) not null,
+Zona varchar(50) not null,
+Telefono varchar(50) not null,
+primary key (IDCliente) 
+);
+
+//Crear tabla ventas
+
+create table Ventas
+(
+IDventa varchar(10) not null,
+IDvendedor int(10) not null,
+IDvehiculo varchar(10) not null,
+IDcliente varchar(10) not null,
+foreign key (IDvendedor) REFERENCES Vendedores(IDvendedor),
+foreign key (IDvehiculo) REFERENCES Vehiculos(IDvehiculo),
+foreign key (IDCliente ) REFERENCES Clientes(IDCliente ),
+primary key (IDventa) 
+);
+
+//Reemplazar un campo en una tabla
+ALTER TABLE Clientes
+CHANGE Zona Localidad varchar(50);
+
+//Añadir campo a una tabla
+ALTER TABLE Vehiculos
+ADD Modelo int(4) not null;
+
+//Eliminar campo de una tabla
+ALTER TABLE Vendedores
+DROP telefono ;
+
+//Añadir varios campos a una tabla
+ALTER TABLE Clientes
+ADD Correo varchar(80) null;
+
+ALTER TABLE Clientes
+ADD Celular int(10) null;
+
+//Crear tabla tipo_vehiculo
+
+create table Tipo_vehiculo
+(
+IDtipo_vehiculo int(10) not null,
+tipo_vehiculo varchar(20) not null,
+primary key (IDtipo_vehiculo) 
+);
+
+//Crear llave foranea
+
+ALTER TABLE vehiculos
+ADD IDtipo_vehiculo int(10) not null;
+
+ALTER TABLE vehiculos
+ADD foreign key (IDtipo_vehiculo) REFERENCES Tipo_vehiculo (IDtipo_vehiculo);
+
+//Reemplazar un campo en una tabla
+ALTER TABLE Ventas
+CHANGE IDvehiculo ID_carro varchar(50);
