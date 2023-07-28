@@ -23,7 +23,7 @@ explain nombre_tabla
 
 
 //Crear base de datos vehiculos
-ceate database Vehiculos;
+create database Vehiculos;
 
 
 //Usar la base de datos creada
