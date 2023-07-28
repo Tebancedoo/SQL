@@ -1,0 +1,59 @@
+
+// Aumentar el tamaño de un campo
+
+
+ALTER TABLE Clientes
+CHANGE Direccion Direccion varchar(100);
+
+//Cambiar tipo de dato
+
+
+ALTER TABLE vehiculos
+CHANGE Vehiculo Vehiculo text(10) not null;
+
+//Eliminar columnas
+
+
+ALTER TABLE clientes
+DROP Barrio;
+
+ALTER TABLE clientes
+DROP Localidad;
+
+//Añadir campo a una tabla
+
+
+ALTER TABLE Clientes
+ADD EPS varchar(30) not null;
+
+ALTER TABLE Clientes
+ADD Cantidad_hijos int(5) null;
+
+//Cambiar nombre de una tabla
+
+
+ALTER TABLE vehiculos
+
+RENAME TO automotor;
+
+//Borrar una tabla
+
+
+DROP TABLE Ventas;
+
+//Crear una tabla
+
+
+create table Facturas 
+(
+Id_factura int(10),
+IDvendedor int(10),
+IDvehiculo varchar(10),
+IDcliente  varchar(10),
+Porcentaje_IVA varchar(10),
+Numero_factura int(100),
+foreign key (IDvendedor) REFERENCES Vendedores(IDvendedor),
+foreign key (IDvehiculo) REFERENCES automotor(IDvehiculo),
+foreign key (IDCliente) REFERENCES Clientes(IDCliente),
+primary key (Id_factura) 
+);
