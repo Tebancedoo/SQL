@@ -6,6 +6,10 @@ cd..
 cd nombre
 
 
+//Ver las carpetas
+dir
+
+
 //Ingresar a la ruta del mysql.exe
 cd C:\xampp\mysql\bin
 
