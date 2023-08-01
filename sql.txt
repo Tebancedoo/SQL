@@ -1,4 +1,4 @@
-//Ingresr al disco local / devolvrse
+//Ingresar al disco local / devolverse
 cd..
 
 
