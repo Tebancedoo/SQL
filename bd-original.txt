@@ -1,0 +1,85 @@
+// Ingresar a la ruta dedl mysql.exe
+
+cd C:\xampp\mysql\bin
+
+
+//ejecutar mysql.exe
+
+C:\xampp\mysql\bin> mysql -h localhost -u root -p 
+
+
+// ver las bases de datos 
+
+show databases;
+
+
+// crear la base de datos 
+
+create database Vehiculos;
+
+
+//usar la base de datos creada
+
+use Vehiculos;
+
+
+// ver las tablas 
+
+show tables;
+
+
+// crear la tabla Vendedores  (Padre)
+
+create table Vendedores 
+(
+    IDvendedor int(10) not null auto_increment,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,
+    telefono varchar(30) not null,
+    f_nacimiento date not null,
+    primary key(IDvendedor)
+);
+
+// crear la tala Vehiculos
+
+create table Vehiculos
+    (
+    IDvehiculo varchar(10) not null,
+    Vehiculo varchar(10) not null,
+    Transmision varchar(70) NOT NULL,
+    Precio float not null,
+    primary key(IDvehiculo)
+    );
+
+// crear la tabla Cliente
+
+create table Clientes
+    (
+    IDcliente varchar(10) not null,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,    
+    Direccion varchar(50) not null,
+    Barrio varchar(50) not null,
+    Ciudad varchar(50) not null,
+    Zona varchar(50) not null,
+    Telefono varchar(30) not null,
+    primary key(IDcliente)
+    );
+
+// crear la tabla Ventas
+
+create table Ventas
+    (
+    IDVenta varchar(10) not null,
+    IDvendedor int(10) not null,
+    IDvehiculo varchar(10) not null,
+    IDcliente varchar(10) not null,
+    Foreign key(IDvendedor) REFERENCES Vendedores(IDvendedor),
+    Foreign key(IDvehiculo) REFERENCES Vehiculos(IDvehiculo),
+    Foreign key(IDcliente) REFERENCES Clientes(IDcliente),
+    Primary key(IDVenta)
+    );
