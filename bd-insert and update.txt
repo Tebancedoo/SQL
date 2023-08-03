@@ -1,0 +1,143 @@
+// Ingresar a la ruta dedl mysql.exe
+
+cd C:\xampp\mysql\bin
+
+
+//ejecutar mysql.exe
+
+C:\xampp\mysql\bin> mysql -h localhost -u root -p 
+
+
+// ver las bases de datos 
+
+show databases;
+
+
+// crear la base de datos 
+
+create database Vehiculos;
+
+
+//usar la base de datos creada
+
+use Vehiculos;
+
+
+// ver las tablas 
+
+show tables;
+
+
+// crear la tabla Vendedores  (Padre)
+
+create table Vendedores 
+(
+    IDvendedor int(10) not null auto_increment,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,
+    telefono varchar(30) not null,
+    f_nacimiento date not null,
+    primary key(IDvendedor)
+);
+
+
+// crear la tala Vehiculos
+
+create table Vehiculos
+    (
+    IDvehiculo varchar(10) not null,
+    Vehiculo varchar(10) not null,
+    Transmision varchar(70) NOT NULL,
+    Precio float not null,
+    primary key(IDvehiculo)
+    );
+
+
+// crear la tabla Cliente
+
+create table Clientes
+    (
+    IDcliente varchar(10) not null,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,    
+    Direccion varchar(50) not null,
+    Barrio varchar(50) not null,
+    Ciudad varchar(50) not null,
+    Zona varchar(50) not null,
+    Telefono varchar(30) not null,
+    primary key(IDcliente)
+    );
+
+
+// crear la tabla Ventas
+
+create table Ventas
+    (
+    IDVenta varchar(10) not null,
+    IDvendedor int(10) not null,
+    IDvehiculo varchar(10) not null,
+    IDcliente varchar(10) not null,
+    Foreign key(IDvendedor) REFERENCES Vendedores(IDvendedor),
+    Foreign key(IDvehiculo) REFERENCES Vehiculos(IDvehiculo),
+    Foreign key(IDcliente) REFERENCES Clientes(IDcliente),
+    Primary key(IDVenta)
+    );
+
+
+// insertar datos 
+
+INSERT INTO vehiculos (IDvehiculo, Vehiculo, Transmision, Precio) VALUES ('V01', 'ABC123', 'MANUAL', 72500000);
+
+
+//ver los datos insertados
+
+SELECT * FROM Vehiculos;
+
+
+//insertar dato sin especificar las columnas donde van
+
+INSERT INTO vehiculos VALUES ('V02', 'ABC234', 'MANUAL', 5500000);
+
+
+// insertar varios datos al mismo tiempo
+
+INSERT INTO vehiculos VALUES ('V03', 'ABC345', 'AUTOMATICA', 8500000), ('V04', 'ABC456', 'AUTOMATICA', 1500000);
+
+
+//insertar datos en la tabla vendedores
+
+INSERT INTO Vendedores (IDvendedor, P_Apellido, S_Apellido, P_Nombre, S_Nombre, telefono, f_nacimiento) VALUES ('1','Cano','Toro','Dana','Luz','30113699900','2000-05-04');
+
+
+//insertar datos sin especificar el dato que va en la llame primaria 
+
+INSERT INTO Vendedores (P_Apellido, S_Apellido, P_Nombre, S_Nombre, telefono, f_nacimiento) VALUES ('Perez','Florez','Ana','Flor','30113699908','2000-09-10');
+
+
+//actualizar un dato
+
+UPDATE Vendedores SET P_Apellido = 'Dueñas', S_Apellido = NULL, S_Nombre = 'Luis', P_Nombre = 'Carlos', telefono = '7896541220', f_nacimiento = '2002-09-02' 
+WHERE IDvendedor = 1;
+
+
+//actualizar dato de null a vacio
+
+UPDATE Vendedores SET S_Apellido = '' WHERE IDvendedor = 1;
+
+
+// insertar datos a clientes
+
+INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
+VALUES ( 'cc2333','Vega','','Carla','','Kra 10 # 72-18','Rosales','Bogota.D.C','Chapinero','6117896540');
+
+
+// Insertar dato en la tabla ventas
+
+INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('01-230801',2,'V03','cc2333');
+
+
+
