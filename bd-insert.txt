@@ -108,8 +108,22 @@ INSERT INTO vehiculos VALUES ('V02', 'ABC234', 'MANUAL', 5500000);
 INSERT INTO vehiculos VALUES ('V03', 'ABC345', 'AUTOMATICA', 8500000), ('V04', 'ABC456', 'AUTOMATICA', 1500000);
 
 
-//
+//insertar datos en la tabla vendedores
+
+INSERT INTO Vendedores (IDvendedor, P_Apellido, S_Apellido, P_Nombre, S_Nombre, telefono, f_nacimiento) VALUES ('1','Cano','Toro','Dana','Luz','30113699900','2000-05-04');
 
 
+//insertar datos sin especificar el dato que va en la llame primaria 
+
+INSERT INTO Vendedores (P_Apellido, S_Apellido, P_Nombre, S_Nombre, telefono, f_nacimiento) VALUES ('Perez','Florez','Ana','Flor','30113699908','2000-09-10');
 
 
+//actualizar un dato
+
+UPDATE Vendedores SET P_Apellido = 'Dueñas', S_Apellido = NULL, S_Nombre = 'Luis', P_Nombre = 'Carlos', telefono = '7896541220', f_nacimiento = '2002-09-02' 
+WHERE IDvendedor = 1;
+
+
+//actualizar dato de null a vacio
+
+UPDATE Vendedores SET S_Apellido = '' WHERE IDvendedor = 1;
