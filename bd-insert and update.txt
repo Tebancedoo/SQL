@@ -1,4 +1,4 @@
-// Ingresar a la ruta dedl mysql.exe
+﻿// Ingresar a la ruta dedl mysql.exe
 
 cd C:\xampp\mysql\bin
 
@@ -139,8 +139,6 @@ VALUES ( 'cc2333','Vega','','Carla','','Kra 10 # 72-18','Rosales','Bogota.D.C','
 
 INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('01-230801',2,'V03','cc2333');
 
-INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('01-230801',2,'V03','cc2333');
-
 
 //insertar cliente ana luisa
 
@@ -184,7 +182,43 @@ create table Clientes
     Telefono varchar(30) not null,
     primary key(IDcliente)
     );
+
+
 // crear los clientes
+
+INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
+VALUES ( 'CC52111','TORRES','','LUISA','ANA','CALLE 100 #5-2','CHICO','BOGOTA','USAQUEN','3012224444 ');
+
+INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
+VALUES ( 'cc2333','Vega','','Carla','','Kra 10 # 72-18','Rosales','Bogota.D.C','Chapinero','6117896540');
+
+
+//crear la tabla venta e insertar una venta
+
+create table Ventas
+    (
+    IDVenta varchar(10) not null,
+    IDvendedor int(10) not null,
+    IDvehiculo varchar(10) not null,
+    IDcliente varchar(10) not null,
+    Foreign key(IDvendedor) REFERENCES Vendedores(IDvendedor),
+    Foreign key(IDvehiculo) REFERENCES Vehiculos(IDvehiculo),
+    Foreign key(IDcliente) REFERENCES Clientes(IDcliente),
+    Primary key(IDVenta)
+    );
+
+INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('01-0000',2,'V01','cc2333');
+
+
+//actualizar trasmision
+
+UPDATE Vehiculos SET Transmision  = 'AUTOMATICA' WHERE IDvehiculo = 'V02';
+
+
+//eliminar los carros vendidos
+
+DELETE FROM Vehiculos
+WHERE IDVehiculo = "V01";
 
 
 
