@@ -139,5 +139,52 @@ VALUES ( 'cc2333','Vega','','Carla','','Kra 10 # 72-18','Rosales','Bogota.D.C','
 
 INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('01-230801',2,'V03','cc2333');
 
+INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('01-230801',2,'V03','cc2333');
+
+
+//insertar cliente ana luisa
+
+INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
+VALUES ( 'CC52111','TORRES','','LUISA','ANA','CALLE 100 #5-2','CHICO','BOGOTA','USAQUEN','3012224444 ');
+
+
+//registrar la venta
+
+INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('02-230801',1,'V04','CC52111');
+
+
+//actualizar valor vehiculo
+
+UPDATE Vehiculos SET Precio  = '63000000' WHERE IDvehiculo = 'V01';
+
+
+//Borrar tabla ventas
+
+DROP table Ventas;
+
+
+//Borrar tabla cientes
+
+DROP table Clientes;
+
+
+//crear la tabla clientes
+
+create table Clientes
+    (
+    IDcliente varchar(10) not null,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,    
+    Direccion varchar(50) not null,
+    Barrio varchar(50) not null,
+    Ciudad varchar(50) not null,
+    Zona varchar(50) not null,
+    Telefono varchar(30) not null,
+    primary key(IDcliente)
+    );
+// crear los clientes
+
 
 
