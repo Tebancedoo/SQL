@@ -233,4 +233,9 @@ DELETE FROM mytable;
 
 SELECT * FROM Vehiculos WHERE IDVehiculo = 'V01';
 
+SELECT * FROM Vehiculos WHERE Vehiculo = 'ABC234';
 
+
+//buscar unos datos especificos
+
+SELECT Vehiculo, Transmision FROM Vehiculos WHERE Vehiculo = 'ABC234';
