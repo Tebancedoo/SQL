@@ -229,6 +229,8 @@ TRUNCATE TABLE mytable;
 
 DELETE FROM mytable;
 
+//seleccionar solo un dato de una tabla
 
+SELECT * FROM Vehiculos WHERE IDVehiculo = 'V01';
 
 
