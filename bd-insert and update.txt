@@ -223,11 +223,13 @@ WHERE IDVenta = '01-0000';
 DELETE FROM Vehiculos
 WHERE IDvehiculo = 'V01';
 
+
 //eliminar todos los registros de una tabla
 
 TRUNCATE TABLE mytable;
 
 DELETE FROM mytable;
+
 
 //seleccionar solo un dato de una tabla
 
@@ -244,4 +246,5 @@ SELECT Vehiculo, Transmision FROM Vehiculos WHERE Vehiculo = 'ABC234';
 //concatnar un string con un resultado de consulta
 
 SELECT CONCAT('El vendedor con el codigo 1 es ', P_Nombre, S_Nombre, P_Apellido,  S_Apellido) FROM Vendedores WHERE IDvendedor = 1;
+
 
