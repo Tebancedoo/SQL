@@ -218,7 +218,7 @@ UPDATE Vehiculos SET Transmision  = 'AUTOMATICA' WHERE IDvehiculo = 'V02';
 //eliminar los carros vendidos
 
 DELETE FROM Vehiculos
-WHERE IDVehiculo = 'V01';
+WHERE IDvehiculo = 'V01';
 
 
 
