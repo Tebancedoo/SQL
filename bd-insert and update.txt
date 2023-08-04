@@ -223,6 +223,10 @@ WHERE IDVenta = '01-0000';
 DELETE FROM Vehiculos
 WHERE IDvehiculo = 'V01';
 
+//eliminar todos los registros de una tabla
+
+TRUNCATE TABLE mytable;
+
 
 
 
