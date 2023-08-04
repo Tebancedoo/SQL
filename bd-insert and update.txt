@@ -227,6 +227,8 @@ WHERE IDvehiculo = 'V01';
 
 TRUNCATE TABLE mytable;
 
+DELETE FROM mytable;
+
 
 
 
