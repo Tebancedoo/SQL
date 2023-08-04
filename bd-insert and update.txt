@@ -220,5 +220,7 @@ UPDATE Vehiculos SET Transmision  = 'AUTOMATICA' WHERE IDvehiculo = 'V02';
 DELETE FROM Vehiculos
 WHERE IDvehiculo = 'V01';
 
+DELETE FROM Ventas
+WHERE IDVenta = '01-0000';
 
 
