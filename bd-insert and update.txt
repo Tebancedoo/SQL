@@ -239,3 +239,9 @@ SELECT * FROM Vehiculos WHERE Vehiculo = 'ABC234';
 //buscar unos datos especificos
 
 SELECT Vehiculo, Transmision FROM Vehiculos WHERE Vehiculo = 'ABC234';
+
+
+//concatnar un string con un resultado de consulta
+
+SELECT CONCAT(El vendedor con el codigo 1, es:, P_Nombre, S_Nombre, P_Apellido,  S_Apellido) FROM IDvendedor = 1;
+
