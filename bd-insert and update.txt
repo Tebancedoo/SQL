@@ -224,27 +224,56 @@ DELETE FROM Vehiculos
 WHERE IDvehiculo = 'V01';
 
 
-//eliminar todos los registros de una tabla
+*//eliminar todos los registros de una tabla
+
 
 TRUNCATE TABLE mytable;
 
 DELETE FROM mytable;
 
 
-//seleccionar solo un dato de una tabla
+*//seleccionar solo un dato de una tabla
+
 
 SELECT * FROM Vehiculos WHERE IDVehiculo = 'V01';
 
 SELECT * FROM Vehiculos WHERE Vehiculo = 'ABC234';
 
 
-//buscar unos datos especificos
+*//buscar unos datos especificos
 
 SELECT Vehiculo, Transmision FROM Vehiculos WHERE Vehiculo = 'ABC234';
 
 
-//concatnar un string con un resultado de consulta
+*//concatnar un string con un resultado de consulta
 
 SELECT CONCAT('El vendedor con el codigo 1 es ', P_Nombre, S_Nombre, P_Apellido,  S_Apellido) FROM Vendedores WHERE IDvendedor = 1;
 
 
+//consultar los vendedores
+
+SELECT * FROM Vendedores;
+
+
+//consultar los nombres de los clientes
+
+SELECT P_Nombre, S_Nombre, P_Apellido, S_Apellido FROM Clientes;
+
+
+//consultar nombre vendedor con telefono
+
+SELECT * FROM Vendedores WHERE telefono = 7896541220 ;
+
+
+//consultar apellido y nacimiento vendedores
+
+SELECT telefono, f_nacimiento FROM Vendedores;
+
+
+//consultar con mensaje
+
+SELECT CONCAT ('la direccion, barrio , cuidad y zona son, respectivamente', Direccion, Barrio, Ciudad, Zona ) FROM Clientes ;
+
+//consultar el vehiculo mas economico
+
+SELECT MIN (Precio) FROM Vehiculos;
