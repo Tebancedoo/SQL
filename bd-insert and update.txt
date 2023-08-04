@@ -243,5 +243,5 @@ SELECT Vehiculo, Transmision FROM Vehiculos WHERE Vehiculo = 'ABC234';
 
 //concatnar un string con un resultado de consulta
 
-SELECT CONCAT(El vendedor con el codigo 1, es:, P_Nombre, S_Nombre, P_Apellido,  S_Apellido) FROM vENDEDORES where IDvendedor = 1;
+SELECT CONCAT(El vendedor con el codigo 1 es, P_Nombre, S_Nombre, P_Apellido,  S_Apellido) FROM Vendedores WHERE IDvendedor = 1;
 
