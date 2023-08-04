@@ -1,0 +1,20 @@
+
+*documento con nombre consulta funcones agregadas
+que funciones agregadas 
+para que son y para que sirve
+count () cuenta
+max () valor_maximo
+min () valor_minimo
+avg () promeido
+contat () 
+
+
+
+//crear la base de datos
+
+create database pruebas_blacklabel;
+
+
+//usar la base de datos
+
+use  pruebas_blacklabel;
