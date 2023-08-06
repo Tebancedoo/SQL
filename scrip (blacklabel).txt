@@ -1,0 +1,112 @@
+﻿
+//crear la base de datos
+
+create database blacklabel_p;
+
+
+//usar la base de datos
+
+use blacklabel_p;
+
+
+//crear la tabla 
+
+create table estados
+(
+id_estado int(10) not null,
+estado text(30) not null,
+primary key (id_estado)
+);
+
+
+//crear la tabla usuarios
+
+create table usuarios
+(
+id_usuario int(10) not null,
+documento varchar(30) not null,
+nombre_usuario text(30) not null,
+contraseña varchar(20) not null,
+correo varchar(30) not null,
+id_estado int(10) not null,
+primary key(documento),
+foreign key(id_estado) REFERENCES estados(id_estado)
+);
+
+
+//crear la tabla roles
+
+create table roles
+(
+id_rol int(10) not null auto_increment,
+rol text (30) not null,
+primary key (id_rol) 
+);
+
+
+//crear la tabla permisos
+
+create table permisos
+(
+id int(10) not null auto_increment,
+documento varchar(30) not null,
+id_rol int(10),
+primary key (id),
+foreign key (id_rol) REFERENCES  roles (id_rol)
+);
+
+
+//crear la tabla categorias
+
+create table categorias 
+(
+id_categoria int(10) not null,
+categoria text(30) not null,
+primary key (id_categoria)
+);
+
+
+//crear la tabla carrito
+
+create table carrito
+(
+id_producto int(10) not null,
+precio_producto float(30) not null,
+cantidad_producto int(30) not null,
+total_producto int(30) not null,
+primary key (precio_producto)
+);
+
+
+//crear la tabla producto
+
+create table productos
+(
+id_producto int(10) not null,
+codigo_producto varchar(30) not null,
+nombre_producto varchar(30) not null,
+id_categoria int(10) not null,
+documento_creador varchar(30) not null,
+precio_producto float(30) not null,
+id_estado int(10) not null,
+primary key (id_producto),
+foreign key (id_categoria) REFERENCES categorias (id_categoria),
+foreign key (documento_creador) REFERENCES usuarios (documento),
+foreign key (precio_producto) REFERENCES carrito (precio_producto),
+foreign key (id_estado) REFERENCES estados(id_estado)
+);
+
+
+//crear la llave foranea de carrito
+
+ALTER TABLE carrito
+ADD foreign key(id_producto) REFERENCES productos(id_producto);
+
+
+//crear la llave foranea de permisos
+
+ALTER TABLE permisos
+ADD foreign key(documento) REFERENCES usuarios(documento);
+
+
+//poner id usuario como auto_increment
