@@ -365,15 +365,16 @@ SELECT sexo, COUNT(*) as genero FROM Vendedores GROUP BY sexo;
 
 SELECT salario, COUNT(*) as personas FROM Vendedores GROUP BY Salario;
 
+SELECT SUM(Salario) FROM Vendedores;
 
 //consultar cual es el hombre y mujer que mas gana
 
-SELECT MAX(Salario) as salario, Sexo as genero FROM Vendedores GROUP BY Sexo;
+SELECT MAX(Salario) as salario, Sexo as genero, P_Nombre as nombre FROM Vendedores GROUP BY Sexo;
 
 
 //consultar cual es el hombre y mujer que menos gana
 
-SELECT MIN(Salario) as salario, Sexo as genero FROM Vendedores GROUP BY Sexo;
+SELECT MIN(Salario) as salario, Sexo as genero, P_Nombre as nombre FROM Vendedores GROUP BY Sexo;
 
 
 //consultar el promedio de los salarios
@@ -383,5 +384,15 @@ SELECT AVG(Salario) FROM Vendedores;
 
 //ordenar por orden alfabetico  el apellido de las mujeres
 
-SELECT * FROM Vendedores ORDER BY  P_Apellido
+SELECT Sexo, P_apellido FROM Vendedores WHERE Sexo = 'Femenino' ORDER BY P_Apellido ASC ;
+
+
+//ordenar por orden alfabetico  el apellido de los hombres
+
+SELECT Sexo, P_apellido FROM Vendedores WHERE Sexo = 'Masculino' ORDER BY P_Apellido ASC ;
+
+
+//consular la cuidad del cliente en la que mas se vende
+
+
  
