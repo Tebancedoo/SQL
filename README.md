@@ -9,6 +9,7 @@
 - DML - Data Manipulation Language
 - DQL - Data Query Language
 - DDL - Data Control Language
+- TCL - Transaction Control Language
 - 
 
 <!--https://www.ibm.com/docs/es/psfa/7.1.0?topic=reference-delete-->
