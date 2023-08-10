@@ -1,0 +1,321 @@
+﻿// Ingresar a la ruta dedl mysql.exe
+
+cd C:\xampp\mysql\bin
+
+
+//ejecutar mysql.exe
+
+C:\xampp\mysql\bin> mysql -h localhost -u root -p 
+
+
+// ver las bases de datos 
+
+show databases;
+
+
+// crear la base de datos 
+
+create database Vehiculos;
+
+
+//usar la base de datos creada
+
+use Vehiculos;
+
+
+// ver las tablas 
+
+show tables;
+
+
+// crear la tabla Vendedores  (Padre)
+
+create table Vendedores 
+(
+    IDvendedor int(10) not null auto_increment,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,
+    telefono varchar(30) not null,
+    f_nacimiento date not null,
+    primary key(IDvendedor)
+);
+
+
+// crear la tala Vehiculos
+
+create table Vehiculos
+    (
+    IDvehiculo varchar(10) not null,
+    Vehiculo varchar(10) not null,
+    Transmision varchar(70) NOT NULL,
+    Precio float not null,
+    primary key(IDvehiculo)
+    );
+
+
+// crear la tabla Cliente
+
+create table Clientes
+    (
+    IDcliente varchar(10) not null,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,    
+    Direccion varchar(50) not null,
+    Barrio varchar(50) not null,
+    Ciudad varchar(50) not null,
+    Zona varchar(50) not null,
+    Telefono varchar(30) not null,
+    primary key(IDcliente)
+    );
+
+
+// crear la tabla Ventas
+
+create table Ventas
+    (
+    IDVenta varchar(10) not null,
+    IDvendedor int(10) not null,
+    IDvehiculo varchar(10) not null,
+    IDcliente varchar(10) not null,
+    Foreign key(IDvendedor) REFERENCES Vendedores(IDvendedor),
+    Foreign key(IDvehiculo) REFERENCES Vehiculos(IDvehiculo),
+    Foreign key(IDcliente) REFERENCES Clientes(IDcliente),
+    Primary key(IDVenta)
+    );
+
+
+// insertar datos 
+
+INSERT INTO vehiculos (IDvehiculo, Vehiculo, Transmision, Precio) VALUES ('V01', 'ABC123', 'MANUAL', 72500000);
+
+
+//ver los datos insertados
+
+SELECT * FROM Vehiculos;
+
+
+//insertar dato sin especificar las columnas donde van
+
+INSERT INTO vehiculos VALUES ('V02', 'ABC234', 'MANUAL', 5500000);
+
+
+// insertar varios datos al mismo tiempo
+
+INSERT INTO vehiculos VALUES ('V03', 'ABC345', 'AUTOMATICA', 8500000), ('V04', 'ABC456', 'AUTOMATICA', 1500000);
+
+
+//insertar datos en la tabla vendedores
+
+INSERT INTO Vendedores (IDvendedor, P_Apellido, S_Apellido, P_Nombre, S_Nombre, telefono, f_nacimiento) VALUES ('1','Cano','Toro','Dana','Luz','30113699900','2000-05-04');
+
+
+//insertar datos sin especificar el dato que va en la llame primaria 
+
+INSERT INTO Vendedores (P_Apellido, S_Apellido, P_Nombre, S_Nombre, telefono, f_nacimiento) VALUES ('Perez','Florez','Ana','Flor','30113699908','2000-09-10');
+
+
+//actualizar un dato
+
+UPDATE Vendedores SET P_Apellido = 'Dueñas', S_Apellido = NULL, S_Nombre = 'Luis', P_Nombre = 'Carlos', telefono = '7896541220', f_nacimiento = '2002-09-02' 
+WHERE IDvendedor = 1;
+
+
+//actualizar dato de null a vacio
+
+UPDATE Vendedores SET S_Apellido = '' WHERE IDvendedor = 1;
+
+
+// insertar datos a clientes
+
+INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
+VALUES ( 'cc2333','Vega','','Carla','','Kra 10 # 72-18','Rosales','Bogota.D.C','Chapinero','6117896540');
+
+
+// Insertar dato en la tabla ventas
+
+INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('01-230801',2,'V03','cc2333');
+
+
+//insertar cliente ana luisa
+
+INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
+VALUES ( 'CC52111','TORRES','','LUISA','ANA','CALLE 100 #5-2','CHICO','BOGOTA','USAQUEN','3012224444 ');
+
+
+//registrar la venta
+
+INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('02-230801',1,'V04','CC52111');
+
+
+//actualizar valor vehiculo
+
+UPDATE Vehiculos SET Precio  = '63000000' WHERE IDvehiculo = 'V01';
+
+
+//Borrar tabla ventas
+
+DROP table Ventas;
+
+
+//Borrar tabla cientes
+
+DROP table Clientes;
+
+
+//crear la tabla clientes
+
+create table Clientes
+    (
+    IDcliente varchar(10) not null,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,    
+    Direccion varchar(50) not null,
+    Barrio varchar(50) not null,
+    Ciudad varchar(50) not null,
+    Zona varchar(50) not null,
+    Telefono varchar(30) not null,
+    primary key(IDcliente)
+    );
+
+
+// crear los clientes
+
+INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
+VALUES ( 'CC52111','TORRES','','LUISA','ANA','CALLE 100 #5-2','CHICO','BOGOTA','USAQUEN','3012224444 ');
+
+INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
+VALUES ( 'cc2333','Vega','','Carla','','Kra 10 # 72-18','Rosales','Bogota.D.C','Chapinero','6117896540');
+
+
+//crear la tabla venta e insertar una venta
+
+create table Ventas
+    (
+    IDVenta varchar(10) not null,
+    IDvendedor int(10) not null,
+    IDvehiculo varchar(10) not null,
+    IDcliente varchar(10) not null,
+    Foreign key(IDvendedor) REFERENCES Vendedores(IDvendedor),
+    Foreign key(IDvehiculo) REFERENCES Vehiculos(IDvehiculo),
+    Foreign key(IDcliente) REFERENCES Clientes(IDcliente),
+    Primary key(IDVenta)
+    );
+
+INSERT INTO Ventas (IDVenta, IDvendedor, IDvehiculo, IDcliente) VALUES ('01-0000',2,'V01','cc2333');
+
+
+//actualizar trasmision
+
+UPDATE Vehiculos SET Transmision  = 'AUTOMATICA' WHERE IDvehiculo = 'V02';
+
+
+//eliminar los carros vendidos
+
+DELETE FROM Ventas
+WHERE IDVenta = '01-0000';
+
+DELETE FROM Vehiculos
+WHERE IDvehiculo = 'V01';
+
+
+*//eliminar todos los registros de una tabla
+
+
+TRUNCATE TABLE mytable;
+
+DELETE FROM mytable;
+
+
+*//seleccionar solo un dato de una tabla
+
+
+SELECT * FROM Vehiculos WHERE IDVehiculo = 'V01';
+
+SELECT * FROM Vehiculos WHERE Vehiculo = 'ABC234';
+
+
+*//buscar unos datos especificos
+
+SELECT Vehiculo, Transmision FROM Vehiculos WHERE Vehiculo = 'ABC234';
+
+
+*//concatnar un string con un resultado de consulta
+
+SELECT CONCAT('El vendedor con el codigo 1 es ', P_Nombre, S_Nombre, P_Apellido,  S_Apellido) FROM Vendedores WHERE IDvendedor = 1;
+
+
+//consultar los vendedores
+
+SELECT * FROM Vendedores;
+
+
+//consultar los nombres de los clientes
+
+SELECT P_Nombre, S_Nombre, P_Apellido, S_Apellido FROM Clientes;
+
+
+//consultar nombre vendedor con telefono
+
+SELECT * FROM Vendedores WHERE telefono = 7896541220 ;
+
+
+//consultar apellido y nacimiento vendedores
+
+SELECT telefono, f_nacimiento FROM Vendedores;
+
+
+//consultar con mensaje
+
+SELECT CONCAT ('la direccion, barrio , cuidad y zona son, respectivamente', Direccion, Barrio, Ciudad, Zona ) FROM Clientes ;
+
+
+//consultar el vehiculo mas economico
+
+SELECT MIN(Precio) FROM Vehiculos;
+
+
+//consultar el vehiculo mas caro
+
+SELECT MAX(Precio) FROM Vehiculos;
+
+
+//consultar promedio de los vehiculos
+
+SELECT AVG(Precio) FROM Vehiculos;
+
+
+//consultar cuantos vehiculos hay
+
+SELECT COUNT(IDvehiculo) FROM Vehiculos;
+
+
+//consultar la placa y trasmision del vehiculo mas caro
+
+SELECT MAX(Precio), Vehiculo FROM Vehiculos;
+
+
+//agrupar un dato
+
+SELECT transmision, COUNT(*) as cantidad FROM Vehiculos GROUP BY Transmision;
+
+
+//ordenar los datos consultados
+
+SELECT * FROM Clientes
+ORDER BY P_Nombre;
+
+
+//having condicion similar al where
+
+SELECT transmision, COUNT(*) as cantidad FROM Vehiculos GROUP BY Transmision;
+
+SELECT transmision, COUNT(*) as cantidad FROM Vehiculos GROUP BY Transmision HAVING COUNT(transmision) > 1;
+
+
+
