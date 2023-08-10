@@ -318,4 +318,70 @@ SELECT transmision, COUNT(*) as cantidad FROM Vehiculos GROUP BY Transmision;
 SELECT transmision, COUNT(*) as cantidad FROM Vehiculos GROUP BY Transmision HAVING COUNT(transmision) > 1;
 
 
+// añadir los campos sexo y salario a vendedores
 
+ALTER TABLE Vendedores
+ADD Sexo varchar(30) not null;
+
+ALTER TABLE Vendedores
+ADD Salario float(30) not null;
+
+
+//insertar 25 registros a vendedores
+
+INSERT INTO Vendedores VALUES ('', 'Gonzales', 'Lopez', 'Pedro', 'Carlos', '789566888', 2009-02-22, 'Masculino', 1500000),
+                              ('', 'Gomez', 'Perez', 'Santiago', 'Timoteo', '78956631230', 2000-08-11, 'Masculino', 1300000),
+                              ('', 'Rojas', 'Fernandez', 'Jose', 'Santiago', '04563200', 2015-05-12, 'Masculino', 1800000),
+                              ('', 'Perez', '', 'Camila', '', '80063200', 2000-12-12, 'Femenino', 1600000),
+                              ('', 'Jimenez', '', 'Laura', '', '21285500', 2012-05-12, 'Femenino', 1200000),
+                              ('', 'ordoñez', '', 'San', 'Carlos', '5050563200', 2020-06-22, 'Masculino', 1900000),
+                              ('', 'Niño', 'Lara', 'Sara', '', '200963331', 2021-07-10, 'Femenino', 1200000),
+                              ('', 'Catillo', 'Carmona', 'Sara', 'Caren', '0000563200', 2001-09-02, 'Femenino', 1300000),
+                              ('', 'Carmona', '', 'Valentina', 'Mateo', '5663200', 2001-05-12, 'Femenino', 1160000),
+                              ('', 'Cortes', '', 'Santiago', '', '200885666', 2005-05-12, 'Masculino', 1400000),
+                              ('', 'Hernandez', '', 'Juan', 'David', '9665663200', 2002-05-12, 'Masculino', 1500000),
+                              ('', 'Lozada', '', 'Sammy', 'Cmila', '0095663200', 2008-03-13, 'Femenino', 1200000),
+                              ('', 'Torres', '', 'Camilo', '', '7895663200', 2022-01-10, 'Masculino', 1900000),
+                              ('', 'Vasquez', 'Sotelo', 'Juan', 'Diego', '7895663200', 2004-01-12, 'Masculino', 1500000),
+                              ('', 'Florez', 'Lopez', 'Santiago', 'Jesus', '7863200899', 2015-02-03, 'Masculino', 1400000),
+                              ('', 'Jimenez', '', 'Jose', '', '71112002', 2023-07-15, 'Masculino', 1100000),
+                              ('', 'Medina', 'Soto', 'Samuel', '', '9500663200', 2007-05-12, 'Masculino', 1450000),
+                              ('', 'Soto', 'Lopez', 'Stiven', 'Jesus', '1366549870', 1980-12-12, 'Masculino', 1300000),
+                              ('', 'gonzales', 'Sammir', '', 'Mateo', '74441663200', 2000-10-10, 'Masculino', 1700000),
+                              ('', 'Cabezas', 'mendivelso', 'Carlos', 'Mateo', '0236663200', 2005-05-12, 'Masculino', 1200000),
+                              ('', 'Samir', 'Lozano', 'Alex', 'Mateo', '08795663200', 1988-08-12, 'Masculino', 1200000),
+                              ('', 'Villa', '', 'Daniela', '', '3201236540', 2003-03-13, 'Femenino', 1800000),
+                              ('', 'Henao', '', 'Jose', '', '3005663200', 1966-05-12, 'Masculino', 2200000),
+                              ('', 'Mina', 'Lopez', 'Kevin', '', '200322455', 2008-05-12, 'Masculino', 1300000),
+                              ('', 'Ortega', 'Vasquez', 'Luna', 'Valentina', '0395663200', 1999-05-12, 'Femenino', 1200000);
+
+
+//consultar cuantos hombres y mujeres hay
+
+SELECT sexo, COUNT(*) as genero FROM Vendedores GROUP BY sexo;
+
+
+//consultar pago vendedores
+
+SELECT salario, COUNT(*) as personas FROM Vendedores GROUP BY Salario;
+
+
+//consultar cual es el hombre y mujer que mas gana
+
+SELECT MAX(Salario) as salario, Sexo as genero FROM Vendedores GROUP BY Sexo;
+
+
+//consultar cual es el hombre y mujer que menos gana
+
+SELECT MIN(Salario) as salario, Sexo as genero FROM Vendedores GROUP BY Sexo;
+
+
+//consultar el promedio de los salarios
+
+SELECT AVG(Salario) FROM Vendedores;
+
+
+//ordenar por orden alfabetico  el apellido de las mujeres
+
+SELECT * FROM Vendedores ORDER BY  P_Apellido
+ 
