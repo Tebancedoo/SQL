@@ -187,10 +187,10 @@ create table Clientes
 // crear los clientes
 
 INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
-VALUES ( 'CC52111','TORRES','','LUISA','ANA','CALLE 100 #5-2','CHICO','BOGOTA','USAQUEN','3012224444 ');
+VALUES ( 'CC52111','TORRES','','LUISA','ANA','CALLE 100 #5-2','CHICO','bogota','USAQUEN','3012224444 ');
 
 INSERT INTO Clientes (IDcliente, P_Apellido, S_Apellido, P_Nombre, S_Nombre, Direccion, Barrio, Ciudad, Zona, Telefono)
-VALUES ( 'cc2333','Vega','','Carla','','Kra 10 # 72-18','Rosales','Bogota.D.C','Chapinero','6117896540');
+VALUES ( 'cc2333','Vega','','Carla','','Kra 10 # 72-18','Rosales','Bogota','Chapinero','6117896540');
 
 
 //crear la tabla venta e insertar una venta
@@ -367,6 +367,7 @@ SELECT salario, COUNT(*) as personas FROM Vendedores GROUP BY Salario;
 
 SELECT SUM(Salario) FROM Vendedores;
 
+
 //consultar cual es el hombre y mujer que mas gana
 
 SELECT MAX(Salario) as salario, Sexo as genero, P_Nombre as nombre FROM Vendedores GROUP BY Sexo;
@@ -394,5 +395,7 @@ SELECT Sexo, P_apellido FROM Vendedores WHERE Sexo = 'Masculino' ORDER BY P_Apel
 
 //consular la cuidad del cliente en la que mas se vende
 
+SELECT ciudad, COUNT(*) as personas FROM Clientes GROUP BY Ciudad;
 
- 
+
+
