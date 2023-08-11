@@ -84,7 +84,7 @@ ALTER TABLE usuarios
 ADD barrio varchar(50) not null;
 
 
-//camiar dato y tipo de dato
+//camibar dato y tipo de dato
 
 ALTER TABLE usuarios
 CHANGE barrio barrio text(100);
