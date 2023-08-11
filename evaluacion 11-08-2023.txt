@@ -14,7 +14,7 @@ use bdadopciones;
 create table usuarios 
 (
 
-id_usuario int(50) not null auto_increment,
+id_usuario int(50) not null,
 nombre_usuario varchar(50) not null,
 apellido_usuario varchar(50) not null,
 documento varchar(50) not null,
@@ -30,7 +30,7 @@ primary key(id_usuario)
 create table tipo_mascota 
 (
 
-id_tipo_mascota int(50) not null auto_increment,
+id_tipo_mascota int(50) not null,
 mascota varchar (50) not null,
 primary key(id_tipo_mascota)
 
@@ -42,7 +42,7 @@ primary key(id_tipo_mascota)
 create table mascotas 
 (
 
-id_mascota int(50) not null auto_increment,
+id_mascota int(50) not null,
 nombre_mascota varchar(50),
 id_tipo_mascota int(50) not null,
 primary key(id_mascota),
@@ -56,7 +56,7 @@ foreign key(id_tipo_mascota) REFERENCES tipo_mascota (id_tipo_mascota)
 create table adopciones 
 (
 
-id_adopcion int(50) not null auto_increment,
+id_adopcion int(50) not null,
 id_usuario int(50) not null,
 id_mascota int(50) not null,
 primary key(id_adopcion),
@@ -72,7 +72,83 @@ create table registros
 (
 
 id_adopcion int(50) not null,
-fecha date(50) not null,
+fecha date not null,
 foreign key(id_adopcion) REFERENCES adopciones(id_adopcion)
 
 );
+
+
+//añadir un campo a la tabla usuarios
+
+ALTER TABLE usuarios
+ADD barrio varchar(50) not null;
+
+
+//camiar dato y tipo de dato
+
+ALTER TABLE usuarios
+CHANGE barrio barrio text(100);
+
+
+//ingresar datos a las tablas
+
+INSERT INTO usuarios (id_usuario, nombre_usuario, apellido_usuario, documento, tipo_documento, dirreccion) VALUES 
+('','Juan Carlos','Gonzales','122020','CC','cll 108'),
+('','Laura Valentina','Garzon','78946','CC','Kr 99'),
+('','Sara Camila','Velandia Vasquez','65474110','CC','Tv 50'),
+('','Pedro','Rojas','1200036874','CC','Dg 100');
+
+
+INSERT INTO tipo_mascota (id_tipo_mascota, mascota) VALUES 
+('', 'Tortuga'),
+('', 'Perro'),
+('', 'Gato');
+
+
+INSERT INTO mascotas (id_mascota, nombre_mascota, id_tipo_mascota) VALUES 
+(1, 'Rodolfo', 1),
+(2, 'Copo de nieve', 2),
+(3, 'Lola', 3);
+
+
+INSERT INTO adopciones (id_adopcion, id_usuario, id_mascota) VALUES 
+('', 1, 3),
+('', 3 , 2),
+('', 4, 1);
+
+
+INSERT INTO registros (id_adopcion, fecha) VALUES 
+(1, 2022-10-15),
+(2, 2023-08-29),
+(3, 2020-12-12);
+
+
+//valor max, min ,promedio, cantidad y total
+
+SELECT MAX(id_adopcion) as adopcion FROM adopciones; 
+
+
+SELECT MIN(id_adopcion) as adopcion FROM adopciones; 
+
+
+SELECT AVG(id_adopcion) as adopcion FROM adopciones; 
+
+
+SELECT MAX(id_adopcion) as adopcion FROM adopciones GROUP BY id_adopcion;
+
+
+SELECT SUM(id_adopcion) as adopcion FROM adopciones; 
+
+
+//consulta con having
+
+SELECT id_usuario, COUNT(id_usuario) as 'numero usuarios' 
+FROM usuarios
+HAVING COUNT(id_usuario) > 0;
+
+
+//consulta con order by
+
+SELECT * FROM usuarios ORDER BY apellido_usuario;
+
+
