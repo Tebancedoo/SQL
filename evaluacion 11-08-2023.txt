@@ -73,6 +73,6 @@ create table registros
 
 id_adopcion int(50) not null,
 fecha date(50) not null,
-foreign key(id_adopcion) REFERENCES registros(id_adopcion)
+foreign key(id_adopcion) REFERENCES adopciones(id_adopcion)
 
 );
