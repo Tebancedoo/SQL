@@ -1,0 +1,78 @@
+
+//crear la base de datos adopciones
+
+create database bdadopciones;
+
+
+//usar la base de datos adopciones
+
+use bdadopciones;
+
+
+//crear la tabla usuarios
+
+create table usuarios 
+(
+
+id_usuario int(50) not null auto_increment,
+nombre_usuario varchar(50) not null,
+apellido_usuario varchar(50) not null,
+documento varchar(50) not null,
+tipo_documento varchar(50) not null,
+dirreccion varchar(50) not null,
+primary key(id_usuario)
+
+);
+
+
+//crear la tabla tipo mascota
+
+create table tipo_mascota 
+(
+
+id_tipo_mascota int(50) not null auto_increment,
+mascota varchar (50) not null,
+primary key(id_tipo_mascota)
+
+);
+
+
+//crear la tabla mascotas
+
+create table mascotas 
+(
+
+id_mascota int(50) not null auto_increment,
+nombre_mascota varchar(50),
+id_tipo_mascota int(50) not null,
+primary key(id_mascota),
+foreign key(id_tipo_mascota) REFERENCES tipo_mascota (id_tipo_mascota)
+
+);
+
+
+//crear la tabla adopciones
+
+create table adopciones 
+(
+
+id_adopcion int(50) not null auto_increment,
+id_usuario int(50) not null,
+id_mascota int(50) not null,
+primary key(id_adopcion),
+foreign key(id_usuario) REFERENCES usuarios (id_usuario),
+foreign key(id_mascota) REFERENCES mascotas (id_mascota)
+
+);
+
+
+//crear la tabla registros
+
+create table registros 
+(
+
+id_adopcion int(50) not null,
+fecha date(50) not null,
+foreign key(id_adopcion) REFERENCES registros(id_adopcion)
+
+);
