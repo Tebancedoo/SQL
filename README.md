@@ -18,5 +18,5 @@
 
 <!--https://www.ibm.com/docs/es/psfa/7.1.0?topic=reference-delete-->
 
-<!--(https://www.tutorialsteacher.com)https://www.tutorialsteacher.com--><!--pagina  on tutoriales e informacion de varios -->
+<!--(https://www.tutorialsteacher.com)https://www.tutorialsteacher.com--><!--pagina  on tutoriales e informacion de varios lwnguajes de programación -->
 
