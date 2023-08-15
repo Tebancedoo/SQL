@@ -13,7 +13,7 @@ use blacklabel_p;
 
 create table estados
 (
-id_estado int(10) not null,
+id_estado int(10) not null auto_increment,
 estado text(30) not null,
 primary key (id_estado)
 );
@@ -60,7 +60,7 @@ foreign key (id_rol) REFERENCES  roles (id_rol)
 
 create table categorias 
 (
-id_categoria int(10) not null,
+id_categoria int(10) not null auto_increment,
 categoria text(30) not null,
 primary key (id_categoria)
 );
@@ -82,7 +82,7 @@ primary key (precio_producto)
 
 create table productos
 (
-id_producto int(10) not null,
+id_producto int(10) not null auto_increment,
 codigo_producto varchar(30) not null,
 nombre_producto varchar(30) not null,
 id_categoria int(10) not null,
@@ -109,4 +109,4 @@ ALTER TABLE permisos
 ADD foreign key(documento) REFERENCES usuarios(documento);
 
 
-//poner todos los id como auto_increment
+//el auto_increment de usuarios por codigo y id_carrito
