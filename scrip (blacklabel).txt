@@ -109,4 +109,4 @@ ALTER TABLE permisos
 ADD foreign key(documento) REFERENCES usuarios(documento);
 
 
-//el auto_increment de usuarios por codigo y id_carrito
+//el auto_increment de usuarios por codigo
