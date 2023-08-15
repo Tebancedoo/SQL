@@ -109,4 +109,4 @@ ALTER TABLE permisos
 ADD foreign key(documento) REFERENCES usuarios(documento);
 
 
-//poner los id  como auto_increment
+//poner todos los id  como auto_increment
