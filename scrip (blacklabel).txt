@@ -75,7 +75,7 @@ precio_producto float(30) not null,
 codigo_producto varchar(30) not null,
 cantidad_producto int(30) not null,
 total_producto int(30) not null,
-primary key (precio_producto)
+primary key (id_producto)
 );
 
 
