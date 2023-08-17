@@ -218,9 +218,15 @@ INNER JOIN  tipo_documentos
 ON Clientes.T_documento = tipo_documentos.IDdocumento;
 
 
-SELECT Clientes.T_documento as 'tipo de documento', Clientes.P_Nombre, Clientes.P_Apellido, Clientes.N_documento, tipo_documentos. Nombre_Documento
+SELECT Clientes.T_documento as 'Tipo de documento', Clientes.P_Nombre as 'Primer nombre', Clientes.P_Apellido as 'Primer apellidos', Clientes.N_documento as 'Numero de documento', tipo_documentos. Nombre_Documento as 'Documento'
 From Clientes
 INNER JOIN  tipo_documentos
+ON Clientes.T_documento = tipo_documentos.IDdocumento;
+
+
+SELECT CONCAT(Clientes.P_nombre, ' ', Clientes.S_nombre, ' ', Clientes.P_apellido, ' ', Clientes.S_apellido) as 'Nombre completo', tipo_documentos.Nombre_Documento as 'Tipo de documento'
+FROM Clientes
+INNER JOIN tipo_documentos
 ON Clientes.T_documento = tipo_documentos.IDdocumento;
 
 
