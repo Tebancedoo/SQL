@@ -1,0 +1,226 @@
+// Ingresar a la ruta dedl mysql.exe
+cd C:\xampp\mysql\bin
+
+//ejecutar mysql.exe
+C:\xampp\mysql\bin> mysql -h localhost -u root -p 
+
+
+// ver las bases de datos 
+show databases;
+
+
+// crear la base de datos 
+create database Vehiculos;
+
+
+//usar la base de datos creada
+use Vehiculos;
+
+
+// ver las tablas 
+show tables;
+
+
+create table Tipo_Documentos
+(
+    IDdocumento int(5) not null ,
+	Nombre_Documento varchar(50) not null,
+    primary key(IDdocumento)
+
+);
+
+
+create table Sexos
+(
+    IDsexo int(5) not null ,
+	Nombre_sexo varchar(50) not null,
+    primary key(IDsexo)
+
+);
+
+
+create table Ciudades 
+(
+    IDciudades int(5) not null ,
+	Nombre_Ciudades varchar(50) not null,
+    primary key(IDciudades)
+
+);
+
+
+// crear la tabla Vendedores  (Padre)
+
+create table Vendedores 
+(
+    IDvendedor int(10) not null auto_increment,
+	T_Documento int(5) not null,
+	N_documento int(20) not null,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,
+    telefono varchar(30) not null,
+    f_nacimiento date not null,
+	IDsexo int(5) not null, 
+	Salario float(30) not null,
+    primary key(IDvendedor),
+	Foreign key(T_Documento) REFERENCES Tipo_Documentos(IDdocumento),
+	Foreign key(IDsexo) REFERENCES Sexos(IDsexo)
+);
+
+
+// crear la tala Vehiculos
+
+create table Vehiculos
+    (
+    IDvehiculo varchar(10) not null,
+    Vehiculo varchar(10) not null,
+    Transmision varchar(70) NOT NULL,
+    Precio float not null,
+    primary key(IDvehiculo)
+    );
+
+
+// crear la tabla Cliente
+
+create table Clientes
+    (
+    IDcliente varchar(10) not null,
+    T_Documento int(5) not null,
+    N_documento int(20) not null,
+    P_Apellido varchar(50) not null,
+    S_Apellido varchar(50) null,
+    P_Nombre varchar(50) not null,
+    S_Nombre varchar(50) null,    
+    Direccion varchar(50) not null,
+    Barrio varchar(50) not null,
+    Ciudad int(5) not null,
+    Zona varchar(50) not null,
+    Telefono varchar(30) not null,
+    primary key(IDcliente),
+    Foreign key(Ciudad) REFERENCES Ciudades(IDciudades),
+    Foreign key(T_Documento) REFERENCES Tipo_Documentos(IDdocumento)
+    );
+
+
+// crear la tabla Ventas
+
+create table Ventas
+    (
+    IDVenta varchar(10) not null,
+    IDvendedor int(10) not null,
+    IDvehiculo varchar(10) not null,
+    IDcliente varchar(10) not null,
+    Foreign key(IDvendedor) REFERENCES Vendedores(IDvendedor),
+    Foreign key(IDvehiculo) REFERENCES Vehiculos(IDvehiculo),
+    Foreign key(IDcliente) REFERENCES Clientes(IDcliente),
+    Primary key(IDVenta)
+    );
+
+
+//nuevas tablas
+
+INSERT INTO sexos(IDsexo,Nombre_sexo)
+values (1,'Femenino'),
+(2,'Masculino' );
+
+
+INSERT INTO ciudades(IDciudades,Nombre_Ciudades)
+values (1,'Bogota D.C.'),
+(2,'Medellin '),
+(3,'Cali'),
+(4,'Barranquilla ');
+
+
+INSERT INTO tipo_documentos (IDdocumento,Nombre_Documento)
+values (1,'Cedula de Ciudadania '),
+(2,'Tarjeta de Identidad '),
+(3,'Pasaporte');
+
+
+INSERT INTO Vehiculos 
+VALUES ('V01','ABC123','MANUAL',72500000),
+('V02','ABC124','MANUAL',5500000),
+('V03','ABC125','MANUAL',15500000),
+('V04','ABC126','AUTOMATICO',8500000);
+
+
+INSERT INTO VENDEDORES ( IDvendedor,T_Documento,N_documento,P_Apellido,S_Apellido,P_Nombre,S_Nombre,telefono,f_nacimiento, IDsexo,Salario)
+values (1,1,153356,'Gil','Perez','Juan','Andres','3016978917','1997-02-06',2,5000),
+(2,2,2554,'Mena','Loaiza','Sebastian','','3126409530','2005-09-12',2,40000),
+(3,1,4585465,'gamboa','muñoz','johan','andres','3102832515','2004-07-14',2,5000),
+(4,2,45754,'Lombana','Bernate','Cristian','David','3108707004','2004-01-14',2,5904000),
+(5,1,57897,'Romero ','Beltrán ','Ramiro ','Rogelio ','3145465460','2023-08-10',1,6000000),
+(6,1,78112,'Correa','Lopez','Samuel','Matahias','3239139884','2006-12-06',2,8600),
+(7,1,27876,'bejarano','verdugo','miguel','angel','3204208227','2005-04-04',2,5500),
+(8,2,157987,'Millan ','Caceres ','Juan ','Manuel ','3143683603','2024-03-06',2,1200000),
+(9,2,79431,'Jiménez','García','Claudia','Paola','3123964147','2000-01-05',1,5000000),
+(10,2,487643,'Caceres ','Perez ','Jenny ','Paola ','3203847282','2023-08-07',1,300000),
+(11,2,549843,'Rocha','Gaucho','Neymar','Pele','3043972237','1997-07-18',2,900.000),
+(12,2,4779,'Curubali','Morado','Messi','Ronaldo','3126548975','1998-10-11',2,10.000),
+(13,1,5798745,'vera','garcia','karen','nicol','3022162546','2006-07-01',1,6000),
+(14,1,579876,'Nieto','Gaona','Jean','Pierre','3122041361','2004-08-04',2,3000000),
+(15,1,4565787,'McDonald','Perth','Ángela ','Sabrina','3210987654','2023-09-02',2,20000000),
+(16,1,45794,'canijos','ijoles','holuuuu','añaaa','1010100100101001010','2009-06-25',2,5999999),
+(17,1,75478,'Tilaguy','Martínez','Diana','Valentina','312354687','2005-08-22',1,35800000),
+(18,1,57845,'Sanchez','Rincon','Jhorinde ','Nataly','3238817564','2005-06-19',1,40000000),
+(19,2,457865,'sanchez','perez','yasuri','yamile','3114629710','2023-08-26',1,200000),
+(20,2,488633,'Ricaurte','Castañeda','Erik','Santiago','3228565678','2004-07-21',2,6000),
+(21,2,22124,'luna','moreno','jhon','andrey','1234567','2003-06-24',2,5000000),
+(22,2,45421,'Cortes','Marín','Karen','Lorena','3145416821','2003-12-08',1,4000000),
+(23,1,34545,'Marquez','Miranda','Nicolle','','3206315322','2005-10-07',1,70000),
+(24,1,45654,'gillermo ','del toro','carlooos','felipe','230923092','2009-11-25',1,393939393),
+(25,2,124574,'Casas','Castillos','Andres','Armando','3333333333','2012-02-29',2,5050),
+(26,2,56464,'gamboa','muñoz','johan ','andres','3102832515','2004-07-14',2,5000),
+(27,2,1545,'parker','perez','peter','ben','3196741886','2001-08-10',2,5100),
+(28,2,4564,'hola','chaves','nikol','karen','3237964191','2005-06-09',2,7000),
+(29,2,156454,'rico','melao','ana','maria','13265896589','1961-02-10',1,800000),
+(30,2,465478,'Mora ','Santana','Dagoberto','','3237613252','2003-11-03',2,50000),
+(31,2,474789,'Rodriguez','Castellanos','Sebastian','Camilo','3227879177','2005-05-13',2,100000),
+(32,1,1564654,'soy franchezco','lamborlliniiiii','fiuuuuuuuuuuuuu','gane','9939393993','2020-02-11',1,49999999);
+
+
+INSERT INTO CLIENTES (IDcliente,T_Documento, N_documento,P_Apellido,S_Apellido,P_Nombre,S_Nombre,Direccion,Barrio,Ciudad,Zona,Telefono)
+values ('22333',2,333,'VEGA','','CARLA','','KRA 10 # 72-18',' ROSALES','1','CHAPINERO','6018882221');
+
+
+INSERT INTO CLIENTES (IDcliente,T_Documento, N_documento,P_Apellido,S_Apellido,P_Nombre,S_Nombre,Direccion,Barrio,Ciudad,Zona,Telefono)
+values ('12597',1,2597,'gamboa','muñoz','johan','andres','KRA 10 # 72-18',' ROSALES',1,' CHAPINERO','6018882221'),
+('28975',2,8975,'Lombana','Bernate','Cristian','David','Calle 50 # 48-25','TEUSAQUILLO',1,'TEUSAQUILLO','601489712'),
+('16975',1,6975,'Romero ','Beltrán ','Ramiro ','Rogelio ','CALLE 70 #57 -23','BOYACA REAL',2,'ENGATIVA','601645872'),
+('26974',2,6974,'Correa','Lopez','Samuel','Matahias','Calle 6 # 13-56','CENTRO',3,'CENTRP','601789432');
+
+
+INSERT INTO VENTAS( IDVenta, IDvendedor,  IDvehiculo,  IDcliente)
+values ('01-0823',5,'V01','12597'),
+('02-0823',3,'V02','12597'),
+('01-0723',5,'V03','28975'),
+('01-0623',1,'V04','16975');
+
+
+// usar inner join (hacer las consultas por las llaves primarias y foraneas)
+
+SELECT Clientes.T_documento, tipo_documentos.IDdocumento 
+FROM Clientes
+INNER JOIN tipo_documentos
+ON Clientes.T_documento = tipo_documentos.IDdocumento ;
+
+
+SELECT Clientes.p_Apellido, tipo_documentos.Nombre_documento (columnas que quiero ver)
+FROM Clientes
+INNER JOIN tipo_documentos
+ON Clientes.T_documento = tipo_documentos.IDdocumento ; (busqueme donde sean iguales)
+
+
+SELECT Clientes.T_documento, Clientes.P_Nombre, Clientes.P_Apellido, Clientes.N_documento, tipo_documentos. Nombre_Documento
+From Clientes
+INNER JOIN  tipo_documentos
+ON Clientes.T_documento = tipo_documentos.IDdocumento;
+
+
+SELECT Clientes.T_documento as 'tipo de documento', Clientes.P_Nombre, Clientes.P_Apellido, Clientes.N_documento, tipo_documentos. Nombre_Documento
+From Clientes
+INNER JOIN  tipo_documentos
+ON Clientes.T_documento = tipo_documentos.IDdocumento;
+
+
