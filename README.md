@@ -18,7 +18,7 @@
 
 #### JOIN SQL
 
-![join](https://github.com/Tebancedoo/SQL-Sena/assets/115185706/d91c2493-40aa-46ef-a63d-2f8f617787e9)
+![e658c914-18df-415c-8ed0-8966020d440c](https://github.com/Tebancedoo/SQL-Sena/assets/115185706/78ab39a3-20aa-4608-b30e-a7d7e7883109)
 
 
 <!--https://www.ibm.com/docs/es/psfa/7.1.0?topic=reference-delete-->
