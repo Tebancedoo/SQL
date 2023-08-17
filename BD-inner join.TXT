@@ -230,3 +230,26 @@ INNER JOIN tipo_documentos
 ON Clientes.T_documento = tipo_documentos.IDdocumento;
 
 
+//consultar con inner join tres tablas
+
+SELECT Ventas.IDVenta, Clientes.P_nombre, Vendedores.P_nombre
+FROM Vendedores
+INNER JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor
+INNER JOIN Clientes
+ON clientes.IDcliente = Ventas.IDcliente;
+
+
+//inner join a cuatro tablas
+
+SELECT Ventas.IDVenta as 'Venta', Clientes.P_nombre as 'Comprador', Vendedores.P_nombre as 'Vendedor', CONCAT (Vehiculos.Vehiculo,' ',Transmision,' ', Precio) as 'Vehiculo-Transmision-Precio '
+FROM Vendedores
+INNER JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor
+INNER JOIN Clientes
+ON clientes.IDcliente = Ventas.IDcliente
+INNER JOIN Vehiculos
+ON Vehiculos.IDvehiculo = Ventas.IDvehiculo;
+
+
+
