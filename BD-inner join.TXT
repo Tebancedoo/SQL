@@ -1,4 +1,4 @@
-// Ingresar a la ruta dedl mysql.exe
+﻿// Ingresar a la ruta dedl mysql.exe
 cd C:\xampp\mysql\bin
 
 //ejecutar mysql.exe
@@ -265,5 +265,62 @@ ON Ventas.IDvendedor = Vendedores.IDvendedor;
 SELECT Ventas.IDvendedor
 FROM Ventas
 LEFT JOIN Vendedores
-WHERE Ventas.IDvendedor = Vendedores.IDvendedor;
+ON Ventas.IDvendedor = Vendedores.IDvendedor
+WHERE Ventas.IDvendedor > '1';
+
+
+//consulta con inner join
+
+SELECT Clientes.P_Nombre, Clientes.N_documento
+From Clientes
+INNER JOIN  tipo_documentos
+ON Clientes.T_documento = tipo_documentos.IDdocumento;
+
+
+//full outer join 
+
+SELECT Vendedores.P_Nombre, Vendedores.P_Apellido, Ventas.IDVenta
+FROM Vendedores
+FULL OUTER JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor;
+
+
+//right outer join
+
+SELECT Vendedores.P_Nombre, Ventas.IDVenta
+FROM Vendedores
+RIGHT OUTER JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor
+WHERE IDVenta = '01-0623';
+
+
+//left join +2 tablas
+
+SELECT Ventas.IDvendedor, Vendedores.P_nombre, Vehiculos.IDvehiculo
+FROM Ventas
+LEFT JOIN Vendedores
+ON Ventas.IDvendedor = Vendedores.IDvendedor
+LEFT JOIN Vehiculos
+ON Vehiculos.IDvehiculo = Ventas.IDvehiculo;
+
+
+//inner join +2 tablas
+
+SELECT Vehiculos.IDvehiculo, Ventas.IDcliente, Vendedores.P_Nombre
+FROM Vehiculos
+INNER JOIN Ventas
+ON Ventas.IDvehiculo = Vehiculos.IDvehiculo
+INNER JOIN Vendedores
+ON Ventas.IDvendedor = Vendedores.IDvendedor;
+
+
+//right join +2 tablas
+
+
+SELECT Vendedores.P_Nombre, Ventas.IDVenta
+FROM Vendedores
+RIGHT OUTER JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor
+RIGHT OUTER JOIN tipo_documentos
+ON Vendedores.T_Documento = tipo_documentos.IDdocumento;
 
