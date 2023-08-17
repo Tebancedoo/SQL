@@ -16,6 +16,11 @@
 - TCL - Transaction Control Language
 - DCL - Data Control Language
 
+#### JOIN SQL
+
+![join](https://github.com/Tebancedoo/SQL-Sena/assets/115185706/d91c2493-40aa-46ef-a63d-2f8f617787e9)
+
+
 <!--https://www.ibm.com/docs/es/psfa/7.1.0?topic=reference-delete-->
 
 <!--(https://www.tutorialsteacher.com)https://www.tutorialsteacher.com--><!--pagina  on tutoriales e informacion de varios lwnguajes de programación -->
