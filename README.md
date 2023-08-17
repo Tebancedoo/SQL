@@ -16,7 +16,7 @@
 - TCL - Transaction Control Language
 - DCL - Data Control Language
 
-#### JOIN SQL
+#### JOINS SQL
 
 ![e658c914-18df-415c-8ed0-8966020d440c](https://github.com/Tebancedoo/SQL-Sena/assets/115185706/78ab39a3-20aa-4608-b30e-a7d7e7883109)
 
