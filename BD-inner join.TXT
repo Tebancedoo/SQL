@@ -252,4 +252,18 @@ INNER JOIN Vehiculos
 ON Vehiculos.IDvehiculo = Ventas.IDvehiculo;
 
 
+//consulta con left join a dos tablas
+
+SELECT Ventas.IDvendedor
+FROM Ventas
+LEFT JOIN Vendedores
+ON Ventas.IDvendedor = Vendedores.IDvendedor;
+
+
+//Realizar consulta con LEFT JOIN CON WHERE(2 TABLAS)
+
+SELECT Ventas.IDvendedor
+FROM Ventas
+LEFT JOIN Vendedores
+WHERE Ventas.IDvendedor = Vendedores.IDvendedor;
 
