@@ -380,7 +380,30 @@ ON Vendedores.IDvendedor = Ventas.IDvendedor;
 
 
 //persona, total ventas, porcentaje
-SELECT Vendedores.P_Nombre, Ventas.IDVenta, (Ventas.IDVenta * 100) / 4 AS 'pORCENTAJE VENTAS'
+
+SELECT Vendedores.P_Nombre, Ventas.IDVenta, (Ventas.IDVenta * 100) / 4 AS 'PORCENTAJE VENTAS'
 FROM Vendedores
 INNER JOIN Ventas
 ON Vendedores.IDvendedor = Ventas.IDvendedor;
+
+
+//Ejercicio evaluacion 
+
+SELECT MAX(Precio) as 'Automovil caro' FROM Vehiculos;
+
+
+SELECT AVG(Precio) as 'Promedio de presioso' FROM VehicUlos;
+
+
+SELECT count(IDvehiculo) as 'Vehiculos' FROM VehicUlos;
+
+
+SELECT Vehiculos.IDvehiculo, CONCAT(Clientes.P_Nombre, ' ' , Clientes.P_Apellido)
+FROM Vehiculos
+INNER JOIN Ventas
+ON Vehiculos.IDvehiculo = Ventas.IDvehiculo
+INNER JOIN Ventas
+ON Vehiculos.IDvehiculo = Ventas.IDvehiculo;
+
+
+
