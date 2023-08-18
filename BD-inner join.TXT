@@ -279,10 +279,24 @@ ON Clientes.T_documento = tipo_documentos.IDdocumento;
 
 //full outer join 
 
-SELECT Vendedores.P_Nombre, Vendedores.P_Apellido, Ventas.IDVenta
+SELECT Vendedores.P_Nombre, Vehiculos.IDvehiculo, Ventas.IDVenta
 FROM Vendedores
-FULL OUTER JOIN Ventas
-ON Vendedores.IDvendedor = Ventas.IDvendedor;
+RIGHT JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor
+LEFT JOIN Vehiculos
+ON Vehiculos.IDvehiculo = Ventas.IDvehiculo;
+
+
+//full outer join CON where
+
+
+SELECT Vendedores.P_Nombre, Vehiculos.IDvehiculo, Ventas.IDVenta
+FROM Vendedores
+RIGHT JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor
+LEFT JOIN Vehiculos
+ON Vehiculos.IDvehiculo = Ventas.IDvehiculo
+WHERE IDVenta = '01-0823';
 
 
 //right outer join
@@ -324,3 +338,49 @@ ON Vendedores.IDvendedor = Ventas.IDvendedor
 RIGHT OUTER JOIN tipo_documentos
 ON Vendedores.T_Documento = tipo_documentos.IDdocumento;
 
+
+//documento y el numero de documentos que hay
+
+SELECT tipo_documentos.Nombre_Documento, COUNT(tipo_documentos.IDdocumento) as 'Cantidad'
+FROM Vendedores
+INNER JOIN tipo_documentos
+ON Vendedores.T_Documento = tipo_documentos.IDdocumento;
+
+
+//que vendedores no han realizado ventas
+
+SELECT Vendedores.IDvendedor as 'Vendedores sin ventas', Vendedores.P_Nombre as 'Primer nombre', Vendedores.P_Apellido as 'Primer apellido'
+FROM Vendedores
+LEFT JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor IS NULL;
+
+
+//cuantos vendedores no tienen ventas
+
+SELECT SUM(Vendedores.IDvendedor) as 'Cantidad vendedores sin ventas'
+FROM Vendedores
+LEFT JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor IS NULL;
+
+
+//porcentaje vendedores sin ventas
+
+SELECT COUNT(Vendedores.IDvendedor) * 100 /36 as 'Porcentaje vendedores sin ventas'
+FROM Vendedores
+LEFT JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor is null;
+
+
+//porcentaje vendedores con venta
+
+SELECT (COUNT(Ventas.IDvendedor) * 100) / 36 as 'Porcentaje vendedores con ventas'
+FROM Ventas
+INNER JOIN Vendedores 
+ON Vendedores.IDvendedor = Ventas.IDvendedor;
+
+
+//persona, total ventas, porcentaje
+SELECT Vendedores.P_Nombre, Ventas.IDVenta, (Ventas.IDVenta * 100) / 4 AS 'pORCENTAJE VENTAS'
+FROM Vendedores
+INNER JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor;
