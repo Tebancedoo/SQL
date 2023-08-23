@@ -1,12 +1,12 @@
 ﻿
 //crear la base de datos
 
-create database blacklabel_p;
+create database blacklabel;
 
 
 //usar la base de datos
 
-use blacklabel_p;
+use blacklabel;
 
 
 //crear la tabla 
