@@ -123,32 +123,46 @@ INSERT INTO registros (id_adopcion, fecha) VALUES
 (3, 2020-12-12);
 
 
-//valor max, min ,promedio, cantidad y total
+//consultar las ventas realizadas a los clientes
 
-SELECT MAX(id_adopcion) as adopcion FROM adopciones; 
-
-
-SELECT MIN(id_adopcion) as adopcion FROM adopciones; 
+SELECT IDcliente, COUNT(IDVenta) FROM Ventas
+GROUP BY IDVenta;
 
 
-SELECT AVG(id_adopcion) as adopcion FROM adopciones; 
+//consltar la cantidad de documentos mayor a 1 de los vendedores
+
+SELECT COUNT(N_documento) FROM Vendedores
+GROUP BY N_documento
+HAVING COUNT(N_documento) > 1;
 
 
-SELECT MAX(id_adopcion) as adopcion FROM adopciones GROUP BY id_adopcion;
+//consultar los apellidos de los vendedores de forma ascendente
+
+SELECT P_Apellido, S_Apellido FROM Vendedores
+ORDER BY P_Apellido, S_Apellido ASC;
 
 
-SELECT SUM(id_adopcion) as adopcion FROM adopciones; 
+//consultar maximo y minimo de documentos de clientes
+
+SELECT MAX(N_documento) FROM Clientes;
+
+SELECT MIN(N_documento) FROM Clientes;
 
 
-//consulta con having
+//sumar el total de documento que hay
 
-SELECT id_usuario, COUNT(id_usuario) as 'numero usuarios' 
-FROM usuarios
-HAVING COUNT(id_usuario) > 0;
+SELECT SUM(N_documento) FROM Clientes;
 
 
-//consulta con order by
+//consultar el porcentaje de cedulas que hay en vendedores
 
-SELECT * FROM usuarios ORDER BY apellido_usuario;
+SELECT COUNT(T_documento) FROM Vendedores WHERE T_documento = '1';
+
+
+
+
+ 
+
+
 
 
