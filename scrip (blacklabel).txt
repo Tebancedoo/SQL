@@ -1,4 +1,6 @@
 ﻿
+***Inicio DDL (Date Definition Lenguage)
+
 //crear la base de datos
 
 create database blacklabel;
@@ -26,6 +28,7 @@ create table usuarios
 id_usuario int(10) not null,
 documento varchar(30) not null,
 nombre_usuario text(30) not null,
+apellido_usuario text (30) not null,
 contraseña varchar(20) not null,
 correo varchar(30) not null,
 id_estado int(10) not null,
@@ -108,5 +111,36 @@ ADD foreign key(codigo_producto) REFERENCES productos(codigo_producto);
 ALTER TABLE permisos
 ADD foreign key(documento) REFERENCES usuarios(documento);
 
+***Fin DDL
+
+
+***Inicio DML (Date Modeling Lenguage)
+
+//insertar estados a la tabla estados
+
+INSERT INTO estados
+VALUES ('', 'activo');
+
+INSERT INTO estados
+VALUES ('', 'inactivo');
+
+SELECT * FROM estados;
+
+
+//insertar usuario a la tabla usuarios
+
+INSERT INTO usuarios
+(id_usuario, documento, nombre_usuario, apellido_usuario, contraseña, correo, id_estado ) 
+VALUES
+(1, 123, 'pepe', 'perez', 'la batalla', 'pepeperez@gmail.com', 1);
+
+INSERT INTO usuarios
+(id_usuario, documento, nombre_usuario, apellido_usuario, contraseña, correo, id_estado ) 
+VALUES
+(2, 223, 'juan', 'garzon', 'the kiss', 'juangarzon@gmail.com', 2);
+
+SELECT * FROM usuarios;
+
+***Fin DML
 
 //el auto_increment de usuarios y productos por codigo 
