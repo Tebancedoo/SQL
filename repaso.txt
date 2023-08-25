@@ -1,0 +1,10 @@
+
+//consultar datos
+
+SELECT N_documento,P_Nombre,S_Nombre,P_Apellido,S_Apellido,IDsexo,Salario FROM Vendedores
+WHERE f_nacimiento > '2002' AND IDsexo = 1 AND Salario > 2000000;
+
+
+SELECT N_documento,P_Nombre,S_Nombre,P_Apellido,S_Apellido,IDsexo,Salario FROM Vendedores
+WHERE f_nacimiento > '2002' AND IDsexo = 1 AND Salario > 2000000
+order by P_Apellido asc;
