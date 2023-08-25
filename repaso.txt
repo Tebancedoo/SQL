@@ -1,10 +1,79 @@
 
 //consultar datos
 
-SELECT N_documento,P_Nombre,S_Nombre,P_Apellido,S_Apellido,IDsexo,Salario FROM Vendedores
+SELECT  N_documento,P_Nombre,S_Nombre,P_Apellido,S_Apellido,IDsexo,Salario FROM Vendedores
 WHERE f_nacimiento > '2002' AND IDsexo = 1 AND Salario > 2000000;
-
 
 SELECT N_documento,P_Nombre,S_Nombre,P_Apellido,S_Apellido,IDsexo,Salario FROM Vendedores
 WHERE f_nacimiento > '2002' AND IDsexo = 1 AND Salario > 2000000
 order by P_Apellido asc;
+
+SELECT N_documento,P_Nombre,S_Nombre,P_Apellido,S_Apellido,IDsexo,Salario, T_Documento FROM Vendedores
+WHERE f_nacimiento > '2002' AND IDsexo = 2 AND Salario > 2000000 AND T_Documento != 1 ;
+
+
+//modificar datos 
+
+ALTER TABLE Vendedores
+CHANGE IDsexo sexo varchar(10);
+
+
+//crear tabla eps
+
+create table eps
+(
+id_eps int(10) not null,
+nombre_eps varchar(50) not null,
+nombre_ips varchar(50) not null,
+ciudad int(5),
+primary key (id_eps),
+foreign key (ciudad) REFERENCES ciudades(IDciudades)
+);
+
+ALTER TABLE eps
+CHANGE ciudad ciudad varchar(10);
+
+insert into eps values ('01f','famisanar','colsubsidio','1'),
+('02f','famisanar','cafam','1'),('03f','compensar','compensar','1');
+
+
+//actualizar vendedores
+
+ALTER TABLE Vendedores
+ADD EPS int(10);
+
+
+ALTER TABLE Vendedores
+ADD foreign key (EPS) REFERENCES eps(id_eps);
+
+
+INSERT INTO eps(id_eps, nombre_eps, nombre_ips, ciudad) VALUES 
+(1 ,'Compensar', 'Compensar', 1 ),
+(2 ,'Famisanar','Cafam', 2),
+(3 ,'Salud total','Salud total', 3),
+(4 ,'Cruz roja','Cruz roja', 4);
+
+
+UPDATE Vendedores
+SET EPS = 1
+WHERE IDvendedor = 1;
+
+
+UPDATE Vendedores
+SET EPS = 3
+WHERE IDvendedor BETWEEN 30 and 32 ;
+
+
+//inner oin vendedores
+
+SELECT Vendedores.T_Documento, tipo_documentos.Nombre_Documento
+FROM Vendedores
+INNER JOIN tipo_documentos
+ON Vendedores.IDvendedor = tipo_documentos.IDdocumento;
+
+
+SELECT Vendedores.IDsexo, sexos.Nombre_sexo
+FROM Vendedores
+INNER JOIN sexos
+ON Vendedores.IDsexo = sexos.IDsexo;
+
