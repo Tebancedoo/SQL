@@ -229,14 +229,48 @@ WHERE P_Nombre NOT LIKE 'j%';
 
 //Operador intersect
 
-SELECT * FROM Ventas
+SELECT IDcliente FROM Ventas
 INTERSECT
-SELECT * FROM Vehiculos;
+SELECT IDcliente FROM Clientes;
 
 
 //Operador minus
 
-SELECT * FROM Ventas
+SELECT * FROM Vehiculos
 MINUS
-SELECT * FROM Vehiculos;
+SELECT * FROM Ventas
+
+
+//Operador union
+
+SELECT * FROM Vehiculos
+UNION
+SELECT * from Ventas;
+
+SELECT IDvehiculo, Precio FROM Vehiculos
+UNION
+SELECT IDvehiculo, IDVenta from Ventas;
+
+
+//Operador distinct
+
+SELECT DISTINCT * FROM Clientes;
+
+SELECT DISTINCT P_Nombre, P_Apellido FROM Clientes;
+
+
+//Operador any
+
+SELECT * FROM Vehiculos
+WHERE IDvehiculo < ANY (SELECT IDvehiculo FROM Ventas);
+
+
+SELECT * FROM Vehiculos
+WHERE IDvehiculo > SOME (SELECT IDvehiculo FROM Ventas);
+
+
+//Operador all
+
+SELECT * FROM Clientes
+WHERE P_Nombre = ALL( SELECT P_Nombre FROM Ventas);
 
