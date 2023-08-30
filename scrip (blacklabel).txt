@@ -141,6 +141,8 @@ VALUES
 
 SELECT * FROM usuarios;
 
+//insertar roles
+
 INSERT INTO roles
 (id_rol,rol) 
 VALUES 
@@ -153,7 +155,8 @@ VALUES
 
 SELECT * FROM roles;
 
-SELECT usuarios.nombre_usuario
+//consultar el estados de los usuarios con su nombre
+SELECT usuarios.nombre_usuario, estados.id_estado
 FROM usuarios
 INNER JOIN estados
 ON usuarios.id_estado = estados.id_estado;
