@@ -142,12 +142,30 @@ VALUES
 SELECT * FROM usuarios;
 
 INSERT INTO roles
-(id_rol,rol) VALUES (1, 'admin');
+(id_rol,rol) 
+VALUES 
+(1, 'admin');
 
 INSERT INTO roles
-(id_rol,rol) VALUES (2, 'usuario');
+(id_rol,rol) 
+VALUES 
+(2, 'usuario');
 
 SELECT * FROM roles;
+
+INSERT INTO estados
+(id_estado,estado)
+VALUES
+(1,'activo');
+
+INSERT INTO estados
+(id_estado,estado)
+VALUES
+(2,'inactivo');
+
+SELECT * FROM usuarios
+JOIN estados
+ON usuarios.id_estado = estados.id_estado;
 
 ***Fin DML
 
