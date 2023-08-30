@@ -153,18 +153,8 @@ VALUES
 
 SELECT * FROM roles;
 
-INSERT INTO estados
-(id_estado,estado)
-VALUES
-(1,'activo');
-
-INSERT INTO estados
-(id_estado,estado)
-VALUES
-(2,'inactivo');
-
-SELECT * FROM usuarios
-JOIN estados
+SELECT usuarios.nombre_usuario
+INNER JOIN estados
 ON usuarios.id_estado = estados.id_estado;
 
 ***Fin DML
