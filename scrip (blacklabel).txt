@@ -141,6 +141,14 @@ VALUES
 
 SELECT * FROM usuarios;
 
+INSERT INTO roles
+(id_rol,rol) VALUES (1, 'admin');
+
+INSERT INTO roles
+(id_rol,rol) VALUES (2, 'usuario');
+
+SELECT * FROM roles;
+
 ***Fin DML
 
 //el auto_increment de usuarios y productos por codigo 
