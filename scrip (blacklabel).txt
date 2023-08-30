@@ -154,6 +154,7 @@ VALUES
 SELECT * FROM roles;
 
 SELECT usuarios.nombre_usuario
+FROM usuarios
 INNER JOIN estados
 ON usuarios.id_estado = estados.id_estado;
 
