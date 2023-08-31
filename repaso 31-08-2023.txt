@@ -1,0 +1,42 @@
+
+//consultar el carro automatico que valga menos de 10.000.000 de pesos
+
+SELECT * FROM Vehiculos
+WHERE Transmision = 'AUTOMATICO' AND Precio < 10000000;
+
+
+//vehiculo entre 5 y 18 millones
+
+SELECT * FROM Vehiculos
+WHERE Precio BETWEEN 5000000 AND 18000000;
+
+
+//vehicullo manual y mayor a 55000000 y menor a 50000000
+
+SELECT * FROM Vehiculos
+WHERE Precio BETWEEN 5500000 AND 50000000;
+
+
+//salarios mayores 
+
+SELECT P_Nombre, Salario
+FROM Vendedores
+WHERE Salario > (SELECT AVG(Salario) FROM Vendedores);
+
+
+//vendedor menor a promeido hombre
+
+SELECT P_Nombre, Salario
+FROM Vendedores
+WHERE Salario < (SELECT AVG(Salario) FROM Vendedores) AND IDsexo = 2;
+
+
+//vendedores menos promedio y no viven en bogota
+
+SELECT P_Nombre, Salario
+FROM Vendedores
+WHERE Salario < (SELECT AVG(Salario) FROM Vendedores) AND IDsexo = 2 AND P_Nombre LIKE 'j%';
+
+
+//
+
