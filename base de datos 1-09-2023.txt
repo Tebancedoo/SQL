@@ -267,5 +267,19 @@ WHERE P_Nombre IN ('andres', 'john', 'erick') OR  S_Nombre IN ('andres', 'john',
 
 CREATE VIEW lista
 AS SELECT * FROM Vendedores
-WHERE f_nacimiento > 2005 OR f_nacimiento BETWEEN 2005 AND 1988 OR f_nacimiento BETWEEN 1988 AND 1975 OR f_nacimiento < 1975; 
+WHERE COUNT(f_nacimiento > 2005) AS 'menores de edad' 
+OR COUNT(f_nacimiento BETWEEN 2005 AND 1988) AS 'entre 18 y 35' 
+OR COUNT(f_nacimiento BETWEEN 1988 AND 1975) AS 'entre 35 y 50' 
+OR COUNT(f_nacimiento < 1975) AS 'mayores 50'; 
+
+
+//nombre vendedores que tienen ventas
+
+CREATE VIEW V_vendedores
+AS SELECT DISTINCT Vendedores.P_nombre, Vendedores.S_nombre ,Ventas.IDVenta 
+FROM Vendedores
+INNER JOIN Ventas
+ON Vendedores.IDvendedor = Ventas.IDvendedor;
+
+
 
