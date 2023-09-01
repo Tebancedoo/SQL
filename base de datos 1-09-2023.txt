@@ -227,4 +227,42 @@ UPDATE V_vehiculos SET Precio = (Precio + (Precio * 0.10)) WHERE IDvehiculo = 'V
 UPDATE V_vehiculos SET Precio = (Precio + (Precio * 0.10)) WHERE IDvehiculo = 'V04';
 
 
+//ver como esta contruida una vista
+
+sp_heltext nombre_vista
+
+
+//encriptar la vista
+
+CREATE VIEW nombre_vista WITH ENCRIPTION
+
+
+//borrar una vista
+
+DROP VIEW nombre_vista
+
+
+//vista valor minimo maximo promedio y total de los vehiculos
+
+CREATE VIEW p_vehiculos
+AS SELECT  MAX(Precio), MIN(Precio), AVG(Precio), SUM(Precio)
+FROM Vehiculos;
+
+
+//vendedores primer nombre iniciando por j y segundo apellido termine en n y primr apellido tenga a
+
+CREATE VIEW p_vendedores
+AS SELECT * FROM Vendedores
+WHERE P_Nombre LIKE 'J%' AND P_Apellido LIKE '%a%' AND S_Apellido LIKE '%n';
+
+
+//crear vista lista que liste los vendedores DE NOMBRE ANDRES, JOHN Y ERICK
+
+CREATE VIEW lista
+AS SELECT * FROM Vendedores
+WHERE P_Nombre IN ('andres', 'john', 'erick') OR  S_Nombre IN ('andres', 'john', 'erick') ;
+
+
 //
+
+
