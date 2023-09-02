@@ -14,7 +14,7 @@
 - DQL - (Data Query Language)
 - DDL - (Data Definition Language)
 - TCL - (Transaction Control Language)
-- DCL - Data Control Language
+- DCL - (Data Control Language)
 
 #### JOINS SQL
 
