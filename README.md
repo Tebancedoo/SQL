@@ -11,7 +11,7 @@
 #### A continuación, se presentarán los significados de los tipos de operaciones con SQL.
 
 - DML - (Data Manipulation Language)
-- DQL - Data Query Language
+- DQL - (Data Query Language)
 - DDL - Data Definition Language
 - TCL - Transaction Control Language
 - DCL - Data Control Language
