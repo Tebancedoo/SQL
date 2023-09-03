@@ -218,8 +218,8 @@ begin
 
 SELECT * FROM Vendedores WHERE P_Nombre like CONCAT('%',letra,'%'); 
 
-end// 
-delimiter ;
+end;
+//
 
 
 //Visualizar el SP
@@ -229,6 +229,51 @@ call p_sp('a');
 
 //Modificar SP
 
+delimiter //
+
+ALTER PROCEDURE p_sp()
+
+BEGIN
+
+SELECT * FROM clientes;
+
+END;
+//
 
 
+//Crear tabla acciones
+
+create table acciones 
+(
+id int(10) not null auto_increment,
+accion varchar(300) null,
+fecha datetime null default current_timestamp,
+primary key(id)
+);
+
+//Crear un trigger
+
+delimiter //
+
+create trigger log after insert on eps 
+for each row 
+
+begin 
+
+insert into acciones (accion) value ('Se creo un registro en eps');
+
+end;
+//
+
+//Visualizar 
+
+
+//insertar eps
+
+INSERT INTO eps VALUES ('05A','Salud Total','Salud Total', 1);
+
+
+//Borrar trigger
+
+DROP trigger log;
 
