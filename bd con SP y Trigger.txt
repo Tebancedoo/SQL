@@ -277,3 +277,5 @@ INSERT INTO eps VALUES ('05A','Salud Total','Salud Total', 1);
 
 DROP trigger log;
 
+
+
