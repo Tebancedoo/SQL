@@ -250,4 +250,8 @@ show triggers;
 
 //insert 2
 
+INSERT INTO productos VALUES ('AR76','camisa','55','peru');
 
+
+
+*/no mandar datos desde get, los datos sensibles como minimo la clave del usuario/*
