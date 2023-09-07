@@ -248,4 +248,6 @@ INSERT INTO productos VALUES ('AR75','pantalon',50,'españa');
 show triggers;
 
 
-//
+//insert 2
+
+
