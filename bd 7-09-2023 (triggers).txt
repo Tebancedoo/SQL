@@ -208,4 +208,44 @@ values ('01-0823',5,'V01','12597'),
 ('01-0623',1,'V04','16975');
 
 
+//crear tabla para los triggers
 
+create table res_productos
+(
+codigoarticulo varchar(25),
+nombrearticulo varchar(30),
+precio int(4),
+insertado datetime
+);
+
+
+//crear tabla productos
+
+create table productos
+(
+codigoarticulo varchar(30),
+nombrearticulo varchar(50),
+precio int(50),
+paisorigen varchar(50)
+);
+
+
+//crear trigger
+
+CREATE TRIGGER productos_ai AFTER INSERT ON productos
+FOR EACH ROW INSERT INTO res_productos (codigoarticulo, nombrearticulo, precio, insertado)
+VALUES
+(NEW.codigoarticulo, NEW.nombrearticulo, NEW.precio, now());
+
+
+//insertar producto
+
+INSERT INTO productos VALUES ('AR75','pantalon',50,'españa');
+
+
+//ver los triggers
+
+show triggers;
+
+
+//
