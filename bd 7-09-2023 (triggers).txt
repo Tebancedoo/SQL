@@ -253,5 +253,16 @@ show triggers;
 INSERT INTO productos VALUES ('AR76','camisa','55','peru');
 
 
+//crer SP
+
+CREATE PROCEDURE hola() SELECT 'Hola mundo';
+
+
+CREATE PROCEDURE actualizar_vehiculos(precio INT, codigo varchar(10))
+UPDATE Vehiculos SET Precio = precio WHERE IDvehiculo = codigo;
+
+CALL actualizar_vehiculos(68000000,'V01');
+
+
 
 */no mandar datos desde get, los datos sensibles como minimo la clave del usuario/*
