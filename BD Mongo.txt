@@ -1,0 +1,69 @@
+
+//Crear la base de datos
+
+use pruebas1
+
+
+//Insertar datos
+
+db.usuario.save({ Nombre: 'Tebancedoo', Nacionalidad: 'Colombiano'});
+
+
+//Mostrar las bases de datos
+
+show dbs;
+
+
+//Mostrar las colecciones
+
+show collections;
+
+
+//Mostrar los documentos 
+
+db.usuario.find();
+
+
+//Insertar varios documentos
+
+db.usuario.insert([
+
+{
+Nombre: 'Draco Perez',
+Nacionalidad: 'Peruano'
+},
+
+{
+Nombre: 'Brayan',
+Nacionalidad: 'Brasileño'
+},
+
+{
+Nombre: 'Pepe',
+Nacionalidad: 'Argentino'
+}
+
+]);
+
+
+//Actualizar 1 documento
+
+db.usuario.updateOne({Nombre:'Draco Perez'}, { $set: {Nacionalidad:'Colombiano'}}) 
+
+
+//Actualizar varios documentos
+
+db.usuario.updateMany({ Nacionalidad:'Colombiano' }, { $set: { Nacionalidad: 'Null' }}) 
+
+
+//Eliminar 1 documento
+
+db.usuario.deleteOne({ Nacionalidad: 'Brasileño' }) 
+
+
+//Eliminar varios documentos
+
+db.usuario.deleteMany({ Nacionalidad:'Null' }) 
+
+
+
