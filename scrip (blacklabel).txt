@@ -196,8 +196,13 @@ INNER JOIN (SELECT id_rol, rol FROM roles);
 
 ***Fin vista
 
+***Fin CRUD
 
 
-***Fin CRUD 
+***subconsulta
+
+
+SELECT * FROM usuarios
+WHERE ( SELECT id_estado = 1 FROM estados);
 
 //el auto_increment de usuarios y productos por codigo 
