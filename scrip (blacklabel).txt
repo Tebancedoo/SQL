@@ -183,7 +183,9 @@ CREATE VIEW V_usuarios
 SELECT usuarios.nombre_usuario, usuarios.documento, permisos.documento, permisos.id_rol, roles.rol, roles.ir_rol
 FROM usuarios
 INNER JOIN permisos
-ON usuarios.documento = permisos.documento;
+ON usuarios.documento = permisos.documento
+INNER JOIN roles
+ON roles.id_rol = permisos.id_rol;
 
 ***Fin CRUD 
 
