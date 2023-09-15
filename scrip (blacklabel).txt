@@ -189,7 +189,7 @@ ON roles.id_rol = permisos.id_rol;
 
 ***subconsulta
 
-SELECT AS (usuarios.nombre_usuario, usuarios.documento, permisos.documento, permisos.id_rol)
+SELECT usuarios.nombre_usuario, usuarios.documento, permisos.documento, permisos.id_rol
 FROM usuarios
 INNER JOIN permisos
 ON usuarios.documento = permisos.documento
