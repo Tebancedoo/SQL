@@ -192,7 +192,7 @@ SELECT usuarios.nombre_usuario, usuarios.documento, permisos.documento, permisos
 FROM usuarios
 INNER JOIN permisos
 ON usuarios.documento = permisos.documento
-AS INNER JOIN (SELECT id_rol, rol FROM roles);
+INNER JOIN (SELECT id_rol, rol FROM roles);
 
 ***Fin vista
 
