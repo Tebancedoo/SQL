@@ -163,4 +163,19 @@ ON usuarios.id_estado = estados.id_estado;
 
 ***Fin DML
 
+***CRUD
+
+ALTER TABLE 
+UPDATE usuarios WHERE id_usuario = 1;
+
+
+ALTER TABLE 
+DROP usuarios WHERE  id_usuario = 1;
+
+INSERT INTO usuarios
+(id_usuario, documento, nombre_usuario, apellido_usuario, contraseña, correo, id_estado ) 
+VALUES
+(2, 223, 'juan', 'garzon', 'the kiss', 'juangarzon@gmail.com', 2);
+
+
 //el auto_increment de usuarios y productos por codigo 
