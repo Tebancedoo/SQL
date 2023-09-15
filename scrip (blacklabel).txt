@@ -180,11 +180,11 @@ VALUES
 ***Vista
 
 CREATE VIEW V_usuarios
+SELECT rol, id_rol FROM roles
 SELECT usuarios.nombre_usuario, usuarios.documento, permisos.documento, permisos.id_rol
 FROM usuarios
 INNER JOIN permisos
-ON usuarios.documento = permisos.documento
-select roles;
+ON usuarios.documento = permisos.documento;
 
 ***Fin CRUD 
 
