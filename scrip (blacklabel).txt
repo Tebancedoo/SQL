@@ -177,5 +177,14 @@ INSERT INTO usuarios
 VALUES
 (2, 223, 'juan', 'garzon', 'the kiss', 'juangarzon@gmail.com', 2);
 
+***Vista
+
+CREATE VIEW V_usuarios
+SELECT usuarios.nombre_usuario, usuarios.documento, permisos.documento, permisos.id_rol, roles.rol, roles.ir_rol
+FROM usuarios
+INNER JOIN permisos
+ON usuarios.documento = permisos.documento;
+
+***Fin CRUD 
 
 //el auto_increment de usuarios y productos por codigo 
