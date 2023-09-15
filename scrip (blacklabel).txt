@@ -187,12 +187,16 @@ ON usuarios.documento = permisos.documento
 INNER JOIN roles
 ON roles.id_rol = permisos.id_rol;
 
+
+SELECT usuarios.nombre_usuario, usuarios.documento, permisos.documento, permisos.id_rol
+FROM usuarios
+INNER JOIN permisos
+ON usuarios.documento = permisos.documento
+INNER JOIN (SELECT id_rol, rol FROM roles);
+
 ***Fin vista
 
-***subconsulta
 
-
-***fin subconsulta
 
 ***Fin CRUD 
 
