@@ -184,8 +184,7 @@ SELECT usuarios.nombre_usuario, usuarios.documento, permisos.documento, permisos
 FROM usuarios
 INNER JOIN permisos
 ON usuarios.documento = permisos.documento
-JOIN select roles
-WHERE roles.id_rol = permisos.id_rol;
+JOIN select roles;
 
 ***Fin CRUD 
 
